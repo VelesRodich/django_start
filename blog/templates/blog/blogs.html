@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  
+<br><a href="{{ '/admin/' }}">В админку</a>
+<br><a href="{% url 'portfolio:portfolio' %}">К портофолио</a>
+<h1>Бложара</h1>
+<br>
+<br><h2>Всего блогов: {{ blogs.count }}</h2>
+<br>
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a>
+
+<p>{{ blog.description|truncatechars:70 }}</p>
+<p>{{ blog.description|safe|truncatechars:70 }}</p>
+<p>{{ blog.description|striptags|truncatechars:70 }}</p>
+<br><img src="{{ blog.image.url }}", width="300", height="200"><br>Картинка
+<br><p>Дата поста: {{ blog.date|date:'d M'|upper }}</p>
+
+  
+
+{% endfor %}
+{% endblock content %}
+<br>
+<br>

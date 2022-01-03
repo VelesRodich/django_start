@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+  
+
+<h1>{{ detail.title }}</h1>
+<p>{{ detail.date }}</p>
+<p>так работают фильты html (если он есть):</p>
+<p>{{ detail.description }}</p>
+<p>{{ detail.description|safe }}</p>
+<p>{{ detail.description|striptags }}</p>
+<br><br><img src="{{ detail.image.url }}", width="700", height="500">
+
+<br><a href="{% url 'portfolio:portfolio' %}">К портофолио</a>
+<br><a href="{% url 'blog:blog_home' %}">К блогу</a>
+<br><a href="{{ '/admin/' }}">В админку</a>
+ 
+
+{% endblock content %}
